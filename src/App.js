@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import  LoginForm   from "./components/LoginForm";
 import  Profile   from "./components/Profile";
+import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes,  Switch, Route } from 'react-router-dom';
 
 // functional components
@@ -9,7 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={ <Home /> } />
+        <Route path="/" element={ <Navbar /> } />
         <Route path="/user/login" element={ <LoginForm /> } />
         <Route path="/user" element={  <Profile /> } />
       </Routes>

@@ -1,0 +1,32 @@
+.Navbar {
+    background:linear-gradient(45deg, rgba(0, 0, 255, 0.37), rgba(255, 0, 0, 0.37));
+}
+
+.Navbar .nav-menu-icon {
+  display: none;
+}
+
+.nav-item {
+    display: inline-block;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.nav-item:hover {
+    background-color: aqua;
+}
+
+@media (max-width: 768px ) {
+    .Navbar .nav-menu-icon {
+        display: block;
+        float: right;
+        padding-right: 10px;
+    }
+}
+
+/* .nav-menu-icon {
+    cursor: pointer;
+    position: relative;
+    right: 0;
+} */
