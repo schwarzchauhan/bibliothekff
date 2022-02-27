@@ -1,9 +1,19 @@
 .Navbar {
     background:linear-gradient(45deg, rgba(0, 0, 255, 0.37), rgba(255, 0, 0, 0.37));
+    /* border: 2px solid chocolate; */
 }
 
 .Navbar .nav-menu-icon {
   display: none;
+}
+
+/* clearfix hack */
+/* https://www.w3schools.com/howto/howto_css_clearfix.asp */
+.navbar-cont::after {
+    /* overflow: hidden; */
+    content: "";
+    clear: both;
+    display: block;
 }
 
 .nav-item {
@@ -18,10 +28,13 @@
 }
 
 @media (max-width: 768px ) {
-    .Navbar .nav-menu-icon {
+    .navbar-cont .nav-menu-icon {
         display: block;
         float: right;
         padding-right: 10px;
+    }
+    .navlinks-cont {
+        display: none;
     }
 }
 

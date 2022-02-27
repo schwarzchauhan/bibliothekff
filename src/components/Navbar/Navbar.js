@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { MenuItems } from "./MenuItems";
-import'./Navbar.css'
+import './Navbar.css'
+import '../../App.css'
 
 class Navbar extends Component {
 
@@ -16,27 +17,29 @@ class Navbar extends Component {
 
     render(){
         return (
-            <nav className='Navbar'>
+            <div className='Navbar'>
                 <h1 className="navbar-logo">🕮</h1>
-                <div className="nav-menu-icon" onClick={this.handleNavMenu}>
-                    <i>
-                        {!this.state.hamClicked ? '☰' : '❌'}
-                    </i>
+                <div className='navbar-cont'>
+                    <div className={this.state.hamClicked ? "navlinks-cont disp-inl-blk" : "navlinks-cont"}>
+                        <ul className='mrgn-blk-start0'>
+                            {MenuItems.map((item, index) => {
+                                return (
+                                    <li className='nav-item'>
+                                        <a className='nav-links' href={item.url}>
+                                            {item.title}
+                                        </a>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                    <div className="nav-menu-icon" onClick={this.handleNavMenu}>
+                        <i>
+                            {!this.state.hamClicked ? '☰' : '❌'}
+                        </i>
+                    </div>  
                 </div>
-                <div className="navbar-cont">
-                    <ul>
-                        {MenuItems.map((item, index) => {
-                            return (
-                                <li className='nav-item'>
-                                    <a className='nav-links' href={item.url}>
-                                        {item.title}
-                                    </a>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
-            </nav>
+            </div>
         )
     }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import  LoginForm   from "./components/LoginForm";
+import  LoginForm   from "./components/LoginForm/LoginForm";
 import  Profile   from "./components/Profile";
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes,  Switch, Route } from 'react-router-dom';
