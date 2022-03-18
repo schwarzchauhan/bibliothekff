@@ -17,7 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject", 
+    "compile-sass-dev": "sass --watch src/styles/sass/Navbar.scss:src/styles/css/Navbar.css"
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.49.9"
   }
 }
