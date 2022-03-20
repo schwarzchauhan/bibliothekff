@@ -2,11 +2,11 @@ import axios  from "axios";
 
 class UserService {
     constructor(){
-        this.domain = "http://127.0.0.1:1337/api";
+        this.domain = process.env.REACT_APP_BACKEND_IP;
     }
     loginRequest = (data) => {
         // console.log(data, typeof data);
-        const url = this.domain  + "/user/login";
+        const url = this.domain  + "/api/user/login";
         axios.post(url, data)
           .then( (res) => {
             console.log(res.data);

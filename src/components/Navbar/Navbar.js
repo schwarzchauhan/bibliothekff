@@ -18,7 +18,7 @@ class Navbar extends Component {
     render(){
         return (
             <div className='Navbar'>
-                <h1 className="navbar-logo">🕮</h1>
+                <h1 className="navbar-logo">🕮 {process.env.NODE_ENV}  </h1>
                 <div className='navbar-cont'>
                     <div className={this.state.hamClicked ? "navlinks-cont disp-inl-blk" : "navlinks-cont"}>
                         <ul className='mrgn-blk-start0'>

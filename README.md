@@ -83,3 +83,9 @@ dev dependencies
 - sass pkg to compile sass to css\
 `npm install sass --save-dev`
 - 
+
+
+# routes 
+
+- `/user/login` - for login 
+- `/notfound` - for HTTP 404 
