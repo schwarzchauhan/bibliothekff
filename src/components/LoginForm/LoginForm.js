@@ -50,8 +50,13 @@ export default function LoginForm() {
     // }
 
     const submitHandler = async (e) => {
-        e.preventDefault();
-        const res = await Login(details);
+        try {
+            e.preventDefault();
+            const res = await Login(details);
+            console.error('submithandler', res);
+        } catch (err) {
+            console.error(err);
+        }
     }
 
 
@@ -60,40 +65,45 @@ export default function LoginForm() {
     // "password": "wzesdrgf"
     // }
     const Login = async (details) => {
-        console.warn(details);
+        try {
+            console.warn(details);
 
-        if(!details.unameEmail){
-            setErrMsg('Oops! username or email field is required');
-            resetErr();
-            return;
-        }
-        if(!details.password){
-            setErrMsg('Oops! Password is required.');
-            resetErr();
-            return;
-        }
-        const isUname = isUsername(details.unameEmail);
-        if(isUname){
-            console.log('USERNAME hai');
-            var body = {unameEmail: details.unameEmail, password: details.password, type: "username"};
-            return userService.loginRequest(body);
-        }else if(!validateEmail(details.unameEmail)){
-            setErrMsg('Oops! Email is invalid')
-            resetErr();
-            return;
-        }else {
-            console.log('EMAIL HAI');
-            var body = {unameEmail: details.unameEmail, password: details.password, type: "email"};
-            return userService.loginRequest(body);
-        }
+            if(!details.unameEmail){
+                setErrMsg('Oops! username or email field is required');
+                resetErr();
+                return;
+            }
+            if(!details.password){
+                setErrMsg('Oops! Password is required.');
+                resetErr();
+                return;
+            }
+            const isUname = isUsername(details.unameEmail);
+            if(isUname){
+                console.log('USERNAME hai');
+                var body = {unameEmail: details.unameEmail, password: details.password, type: "username"};
+                return userService.loginRequest(body);
+            }else if(!validateEmail(details.unameEmail)){
+                setErrMsg('Oops! Email is invalid')
+                resetErr();
+                return;
+            }else {
+                console.log('EMAIL HAI');
+                var body = {unameEmail: details.unameEmail, password: details.password, type: "email"};
+                const response = await userService.loginRequest(body);
+                return response;
+            }
 
-        console.warn('is reaching here');
-        // // making a post request
-        // const url = baseUrl + '/user/login'
-        // const body = {
-        //   email: details.email, 
-        //   password: details.password
-        // };
+            console.warn('is reaching here');
+            // // making a post request
+            // const url = baseUrl + '/user/login'
+            // const body = {
+            //   email: details.email, 
+            //   password: details.password
+            // };
+        } catch (err) {
+            console.error(err);
+        }
 
     }
 

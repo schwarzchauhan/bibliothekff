@@ -83,7 +83,8 @@ dev dependencies
 - sass pkg to compile sass to css\
 `npm install sass --save-dev`
 - 
-
+## hosting on netlify
+> `CI=false npm run build`
 
 # routes 
 

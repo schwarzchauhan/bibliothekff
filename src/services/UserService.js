@@ -4,19 +4,22 @@ class UserService {
     constructor(){
         this.domain = process.env.REACT_APP_BACKEND_IP;
     }
+    // https://stackoverflow.com/questions/53385477/using-async-await-still-returns-undefined
     loginRequest = (data) => {
         // console.log(data, typeof data);
         const url = this.domain  + "/api/user/login";
-        axios.post(url, data)
+        return new Promise(resolve => {
+          axios.post(url, data)
           .then( (res) => {
-            console.log(res.data);
-            return res;
+            resolve(res.data);
           } )
           .catch((err)=> {
             console.warn(err);
             console.warn(err.message);
-            return err;
+            resolve(err);
           })
+
+        })
     }
 }
 
