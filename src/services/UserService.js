@@ -11,6 +11,7 @@ class UserService {
         return new Promise(resolve => {
           axios.post(url, data)
           .then( (res) => {
+            // res.data  {"_id": "61f6538cdfef69387709ec03","email": "harshchauhan0994@gmail.com","password": "4321","name": "harsh chauhan"}
             resolve(res.data);
           } )
           .catch((err)=> {

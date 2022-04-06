@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./LoginForm.css";
 import UserService from '../../services/UserService';
+import {useNavigate} from 'react-router-dom';
 
 const validateEmail = (email) => {
     return String(email)
@@ -34,6 +35,8 @@ export default function LoginForm() {
     const [user, setUser] = useState({name: "", email: ""});
     const [error, setErrMsg] = useState("");
 
+    let navigate = useNavigate();
+
     // used to remove err label after 5sec interval
     const resetErr = () => {
         setTimeout(() => {
@@ -52,8 +55,9 @@ export default function LoginForm() {
     const submitHandler = async (e) => {
         try {
             e.preventDefault();
-            const res = await Login(details);
-            console.error('submithandler', res);
+            const data = await Login(details);
+            console.warn('submithandler', data);
+            navigate("/dashboard")
         } catch (err) {
             console.error(err);
         }
