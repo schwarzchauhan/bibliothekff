@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject", 
-    "compile-sass-dev": "sass --watch src/styles/sass/Navbar.scss:src/styles/css/Navbar.css"
+    "compile-sass-dev": "sass --watch src/assets/styles/sass/Navbar.scss:src/assets/styles/css/Navbar.css"
   },
   "eslintConfig": {
     "extends": [

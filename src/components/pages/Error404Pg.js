@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../styles/css/global.css";
+import "../../assets/styles/css/global.css";
 
 export default function Error404Pg() {
     return (

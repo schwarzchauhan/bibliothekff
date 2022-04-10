@@ -81,8 +81,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 dev dependencies 
 
 - sass pkg to compile sass to css\
-`npm install sass --save-dev`
-- 
+`npm install sass --save-dev`\
+[documentation](https://sass-lang.com/documentation/js-api)
+
 ## hosting on netlify
 > `CI=false npm run build`
 
