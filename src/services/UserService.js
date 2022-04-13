@@ -11,7 +11,7 @@ class UserService {
         return new Promise((resolve,reject) => {
           axios.post(url, data)
           .then( (res) => {
-            // res.data  {"_id": "61f6538cdfef69387709ec03","email": "harshchauhan0994@gmail.com","password": "4321","name": "harsh chauhan"}
+            // res.data  {"_id":"61f6538cdfef69387709ec03","email":"harshchauhan0994@gmail.com","password":"4321","name":"harsh chauhan","imgUrl":"https://miro.medium.com/max/875/1*7HZGoVt_I3g_3f-j8uwpSg.jpeg"}
             return resolve(res.data);
           } )
           .catch((err)=> {
@@ -28,6 +28,20 @@ class UserService {
           })
 
         })
+    }
+    getProfileData = (data) => {
+      const url = this.domain + `/api/user/dashboard/${data.username}`;
+      return new Promise(resolve => {
+        axios.get(url)
+        .then( (res) => {
+          resolve(res.data);
+        })
+        .catch( (err) => {
+          console.warn(err);
+          console.warn(err.message);
+          resolve(err);
+        } )
+      })
     }
 }
 

@@ -18,3 +18,13 @@
 .txtAlgnCenter {
     text-align: center;
 }
+
+.centered-axis-x {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.top10p{
+    top: 10px;
+}

@@ -91,3 +91,12 @@ dev dependencies
 
 - `/user/login` - for login 
 - `/notfound` - for HTTP 404 
+- `/dashboard/:username` - dashboard page of user
+
+## react router dom
+<https://reactrouter.com/docs/en/v6/getting-started/overview>
+
+## bootstrap css
+
+<https://www.geeksforgeeks.org/how-to-use-bootstrap-in-reactjs/>
+<https://react-bootstrap.github.io/getting-started/introduction/>

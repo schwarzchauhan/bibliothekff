@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Homepage /> } />
         <Route path="/user/login" element={ <LoginForm /> } />
-        <Route path="/dashboard" element={ <Profile authorized={true}  /> } />
+        <Route path="/dashboard/:username" element={ <Profile authorized={true}  /> } />
         <Route path="/notfound" element={  <Error404Pg /> } />
       </Routes>
     </Router>

@@ -57,7 +57,7 @@ export default function LoginForm() {
             e.preventDefault();
             const data = await Login(details);
             console.warn('submithandler', data);
-            navigate("/dashboard")
+            navigate(`/dashboard/${data.username}`)
         } catch (err) {
             // console.error('submithandler ~~ ', err, err instanceof Error);
             setErrMsg(err.message)
