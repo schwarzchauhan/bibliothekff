@@ -59,7 +59,9 @@ export default function LoginForm() {
             console.warn('submithandler', data);
             navigate("/dashboard")
         } catch (err) {
-            console.error(err);
+            // console.error('submithandler ~~ ', err, err instanceof Error);
+            setErrMsg(err.message)
+            resetErr();
         }
     }
 
@@ -73,14 +75,12 @@ export default function LoginForm() {
             console.warn(details);
 
             if(!details.unameEmail){
-                setErrMsg('Oops! username or email field is required');
-                resetErr();
-                return;
+                const err = {message : 'Oops! username or email field is required'};
+                throw err;
             }
             if(!details.password){
-                setErrMsg('Oops! Password is required.');
-                resetErr();
-                return;
+                const err = {message : 'Oops! Password is required.'};
+                throw err;            
             }
             const isUname = isUsername(details.unameEmail);
             if(isUname){
@@ -88,9 +88,8 @@ export default function LoginForm() {
                 var body = {unameEmail: details.unameEmail, password: details.password, type: "username"};
                 return userService.loginRequest(body);
             }else if(!validateEmail(details.unameEmail)){
-                setErrMsg('Oops! Email is invalid')
-                resetErr();
-                return;
+                const err = new Error('Oops! Email is Invalid.');
+                throw err;            
             }else {
                 console.log('EMAIL HAI');
                 var body = {unameEmail: details.unameEmail, password: details.password, type: "email"};
@@ -106,7 +105,8 @@ export default function LoginForm() {
             //   password: details.password
             // };
         } catch (err) {
-            console.error(err);
+            // console.error("error while login ", err);
+            throw err;
         }
 
     }
