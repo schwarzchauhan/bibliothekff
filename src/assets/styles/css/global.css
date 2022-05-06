@@ -18,3 +18,15 @@
 .txtAlgnCenter {
     text-align: center;
 }
+
+.blk-center {
+    margin: auto;
+}
+
+.wdth40per {
+    width: 40%;
+}
+
+.wdth100per {
+    width: 100%;
+}

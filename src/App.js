@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import  LoginForm   from "./components/LoginForm/LoginForm";
 import  Profile   from "./components/Profile";
 import  Homepage   from "./components/Homepage";
+import  Mcqform   from "./components/Forms/Mcqform";
 import Navbar from './components/Navbar/Navbar';
 import Error404Pg from './components/pages/Error404Pg';
 import { BrowserRouter as Router, Routes,  Switch, Route } from 'react-router-dom';
@@ -16,6 +17,7 @@ function App() {
         <Route path="/user/login" element={ <LoginForm /> } />
         <Route path="/dashboard" element={ <Profile authorized={true}  /> } />
         <Route path="/notfound" element={  <Error404Pg /> } />
+        <Route path="/mcq/save" element={  <Mcqform /> } />
       </Routes>
     </Router>
   );
