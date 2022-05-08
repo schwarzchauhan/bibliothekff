@@ -15,7 +15,7 @@ class McqService {
             return resolve(res.data);
           })
           .catch((err)=> {
-            if(err.response && err.response.data && err.response.data.type == 'knownError'){
+            if(err.response && err.response.data && err.response.data.type == 'KnownError'){
               err.message = err.response.data.message;
             }else {
                 err.message = 'Oops! Unexpected Error occurred.'
