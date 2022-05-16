@@ -1,10 +1,6 @@
-.form-field-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0px;
-}
-
 .mcq-form-cont {
+  background-image: url("https://4kwallpapers.com/images/walls/thumbs_2t/4523.jpg");
+  height: 100%;
   padding: 10px;
 }
 .mcq-form-cont .mcq-form-inner {
@@ -13,6 +9,50 @@
   margin: auto;
   padding: 20px;
   width: 40%;
+}
+.mcq-form-cont .mcq-form-inner .dspFlex-75-20per {
+  display: flex;
+  justify-content: space-between;
+}
+.mcq-form-cont .mcq-form-inner .dspFlex-75-20per .fl-item1 {
+  flex-basis: 75%;
+}
+.mcq-form-cont .mcq-form-inner .dspFlex-75-20per .fl-item1 input {
+  padding: 5px;
+  width: 100%;
+}
+.mcq-form-cont .mcq-form-inner .dspFlex-75-20per .fl-item2 {
+  flex-basis: 20%;
+}
+.mcq-form-cont .mcq-form-inner .dspFlex-75-20per .fl-item2 button {
+  width: 100%;
+}
+.mcq-form-cont .mcq-form-inner .form-field-row {
+  margin: 20px 0px;
+}
+.mcq-form-cont .mcq-form-inner .form-inpt-rw {
+  margin: 20px 0px;
+}
+.mcq-form-cont .mcq-form-inner .form-inpt-rw input {
+  padding: 5px 0px;
+}
+.mcq-form-cont .mcq-form-inner .formSbmitBtn {
+  background-color: rgba(0, 0, 205, 0.8);
+  border-radius: 20px;
+  border-style: solid;
+  color: whitesmoke;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+}
+.mcq-form-cont .mcq-form-inner .formSbmitBtn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .mcq-form-cont .mcq-form-inner {
+    width: 90%;
+  }
 }
 
 /*# sourceMappingURL=Form.css.map */

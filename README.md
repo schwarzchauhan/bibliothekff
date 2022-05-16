@@ -82,7 +82,10 @@ dev dependencies
 
 - sass pkg to compile sass to css\
 `npm install sass --save-dev`\
-[documentation](https://sass-lang.com/documentation/js-api)
+[documentation](https://sass-lang.com/documentation/js-api)  \
+[sass - parent selctor](https://sass-lang.com/documentation/style-rules/parent-selector)  \
+[conditional operator in reactjs](https://reactjs.org/docs/conditional-rendering.html#inline-if-with-logical--operator)
+
 
 ## hosting on netlify
 > `CI=false npm run build`
@@ -91,3 +94,5 @@ dev dependencies
 
 - `/user/login` - for login 
 - `/notfound` - for HTTP 404 
+
+
