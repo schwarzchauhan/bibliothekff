@@ -1,4 +1,8 @@
 /* ------ custom css ------ */
+html, body, #root {
+    height: 100%;
+}
+
 @keyframes blink {
     0% {
         opacity:1;
@@ -30,3 +34,17 @@
 .wdth100per {
     width: 100%;
 }
+
+/* button custom propt */
+
+.btn-dflt{
+    background-color: transparent;
+    border-style: none;
+}
+
+.cstm-ldr-icon {
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 20%);
+}
+
