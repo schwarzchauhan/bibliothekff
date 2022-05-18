@@ -27,6 +27,7 @@ class Navbar extends Component {
                                     <li className='nav-item'>
                                         <a className='nav-links' href={item.url}>
                                             {item.title}
+                                            {item.imgUrl && <img className='navIcon' src={item.imgUrl}></img>}
                                         </a>
                                     </li>
                                 )
