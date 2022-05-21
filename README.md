@@ -86,6 +86,8 @@ dev dependencies
 [sass - parent selctor](https://sass-lang.com/documentation/style-rules/parent-selector)  \
 [conditional operator in reactjs](https://reactjs.org/docs/conditional-rendering.html#inline-if-with-logical--operator)
 
+- [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)  
+ [cdn](https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css)
 
 ## hosting on netlify
 > `CI=false npm run build`
