@@ -23,25 +23,25 @@ class Mcq extends React.Component {
                                     </div>
                                     <div className="mcq-radio">
                                         <label>
-                                            <input type="radio" name="brazil" value="brazil" />
+                                            <input type="radio" name="mcqOptn" value="brazil" />
                                             <span>Brazil</span>
                                         </label>
                                     </div>
                                     <div className="mcq-radio">
                                         <label>
-                                            <input type="radio" name="Germany" value="Germany" />
+                                            <input type="radio" name="mcqOptn" value="Germany" />
                                             <span>Germany</span>
                                         </label>
                                     </div>
                                     <div className="mcq-radio">
                                         <label>
-                                            <input type="radio" name="Indonesia" value="Indonesia" />
+                                            <input type="radio" name="mcqOptn" value="Indonesia" />
                                             <span>Indonesia</span>
                                         </label>
                                     </div>
                                     <div className="mcq-radio">
                                         <label>
-                                            <input type="radio" name="Russia" value="Russia" />
+                                            <input type="radio" name="mcqOptn" value="Russia" />
                                             <span>Russia</span>
                                         </label>
                                     </div>
