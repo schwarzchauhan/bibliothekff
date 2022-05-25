@@ -10,7 +10,7 @@ const McqServicee = {
         const noOfMcqs = 10;
         const url = Bknd.domain + `/api/quiz/${lang}/${noOfMcqs}`;
         return new Promise((resolve, reject) => {
-            axios.post(url)
+            axios.get(url)
                 .then((res) => {
                     return resolve(res.data);
                 })
