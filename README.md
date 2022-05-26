@@ -98,3 +98,7 @@ dev dependencies
 - `/notfound` - for HTTP 404 
 
 
+## learning 
+pass props   \
+https://javascript.plainenglish.io/how-to-pass-props-from-child-to-parent-component-in-react-d90752ff4d01  \
+

@@ -37,6 +37,41 @@ class McqQuiz extends React.Component {
             })
     }
 
+    // https://dev.to/vadims4/passing-down-functions-in-react-4618
+    // https://stackoverflow.com/questions/65510636/reactjs-pass-multiple-functions-to-child-components-as-a-single-prop 
+    functions = {
+        prevQues : () => {
+            if(this.state.currMcqInd <= 0){
+                console.error('no previouse quesn');
+            }else {
+                var ind = this.state.currMcqInd - 1;
+                this.setState({
+                    currMcqInd: ind, 
+                    currMcq: {
+                        quesn: this.state.allMcq[ind], 
+                        choices: this.state.allMcq[ind]
+                    }
+                })     
+            }
+        },
+        nextQues : () => {
+            if(this.state.currMcqInd >= 9){
+                console.error('no next quesn');
+            }else {
+                var ind = this.state.currMcqInd + 1;
+                console.error(ind);
+                this.setState({
+                    currMcqInd: ind, 
+                    currMcq: {
+                        quesn: this.state.allMcq[ind].quesn, 
+                        choices: this.state.allMcq[ind].choices
+                    }
+                })
+                console.error('this.state-nextQues', this.state);     
+            }
+        }
+    }
+
     // componentDidMount() method is the perfect place, where we can call the setState() method 
     // to change the state of our application and render() the updated data loaded JSX. 
     // For example, we are going to fetch any data from an API 
@@ -51,7 +86,7 @@ class McqQuiz extends React.Component {
                 <div className='cstm-ldr-icon'>
                     {this.state.isLoadingMcq && <img src="https://acegif.com/wp-content/uploads/loading-63.gif" />}
                 </div>
-                {!this.state.isLoadingMcq && this.state.currMcq && <Mcq {...this.state.currMcq} />}
+                {!this.state.isLoadingMcq && this.state.currMcq && <Mcq {...this.state.currMcq} {...this.functions} />}
             </div>
         )
     }
