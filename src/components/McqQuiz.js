@@ -4,6 +4,7 @@ import '../assets/styles/css/global.css'
 import McqServicee from '../services/McqServicee';
 
 
+// component for mcq quiz
 class McqQuiz extends React.Component {
     constructor(props) {
         super(props);
@@ -12,10 +13,12 @@ class McqQuiz extends React.Component {
             err: null,
             allMcq: [],
             currMcqInd: null,
-            currMcq: null
+            currMcq: null, 
+            allMcqAns:Array(10).fill('')    // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
         };
     }
 
+    // to get random mcqs from the backend
     getMcqData() {
         McqServicee.getMcqQuiz()
             .then((data) => {
@@ -28,8 +31,9 @@ class McqQuiz extends React.Component {
                         quesn: data[0].quesn,
                         choices: data[0].choices
                     }
+                }, () => {
+                    console.error('setState callback', this.state);
                 })
-                console.error(this.state);
             })
             .catch((err) => {
                 this.setState({ isLoadingMcq: false, err })
@@ -40,20 +44,25 @@ class McqQuiz extends React.Component {
     // https://dev.to/vadims4/passing-down-functions-in-react-4618
     // https://stackoverflow.com/questions/65510636/reactjs-pass-multiple-functions-to-child-components-as-a-single-prop 
     functions = {
+        // go to previous quesn
         prevQues : () => {
             if(this.state.currMcqInd <= 0){
                 console.error('no previouse quesn');
             }else {
                 var ind = this.state.currMcqInd - 1;
+                console.error(ind);
                 this.setState({
                     currMcqInd: ind, 
                     currMcq: {
-                        quesn: this.state.allMcq[ind], 
-                        choices: this.state.allMcq[ind]
+                        quesn: this.state.allMcq[ind].quesn, 
+                        choices: this.state.allMcq[ind].choices
                     }
+                }, () => {
+                    console.error('this.state-prevQues', this.state.currMcqInd, this.state.currMcq);     
                 })     
             }
         },
+        // go to next quesn
         nextQues : () => {
             if(this.state.currMcqInd >= 9){
                 console.error('no next quesn');
@@ -66,8 +75,9 @@ class McqQuiz extends React.Component {
                         quesn: this.state.allMcq[ind].quesn, 
                         choices: this.state.allMcq[ind].choices
                     }
+                }, () => {
+                    console.error('this.state-nextQues', this.state.currMcqInd, this.state.currMcq);     
                 })
-                console.error('this.state-nextQues', this.state);     
             }
         }
     }
