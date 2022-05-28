@@ -3,6 +3,7 @@ import React from "react";
 import '../assets/styles/css/global.css'
 import McqServicee from '../services/McqServicee';
 
+//TODO: show mcq selected when user again goes to the answered quesn(ie. selected mcq optn should still be red)
 
 // component for mcq quiz
 class McqQuiz extends React.Component {
@@ -33,6 +34,7 @@ class McqQuiz extends React.Component {
                     }
                 }, () => {
                     console.error('setState callback', this.state);
+                    console.error('this.state callbk', this.state.currMcqInd, this.state.currMcq);     
                 })
             })
             .catch((err) => {
@@ -79,13 +81,23 @@ class McqQuiz extends React.Component {
                     console.error('this.state-nextQues', this.state.currMcqInd, this.state.currMcq);     
                 })
             }
+        }, 
+        //set answer for current mcq
+        setCurrMcqAns : (selectedChoice) => {
+            const temp = [...this.state.allMcqAns];
+            temp[this.state.currMcqInd] = selectedChoice;
+            this.setState({
+                allMcqAns: temp
+            }, () => {
+                console.error('this.state-setCurrMcqAns', this.state.allMcqAns);     
+            })        
         }
     }
 
     // componentDidMount() method is the perfect place, where we can call the setState() method 
     // to change the state of our application and render() the updated data loaded JSX. 
     // For example, we are going to fetch any data from an API 
-    // then API call should be placed in this lifecycle method, and then we get the response, we can call the setState() method and render the element with updated dat
+    // then API call should be placed in this lifecycle method, and then we get the response, we can call the setState() method and render the element with updated data
     componentDidMount() {
         console.log('componentDidMount');
         this.getMcqData();
@@ -93,10 +105,11 @@ class McqQuiz extends React.Component {
     render() {
         return (
             <div>
+                {this.state.currMcqInd}
                 <div className='cstm-ldr-icon'>
                     {this.state.isLoadingMcq && <img src="https://acegif.com/wp-content/uploads/loading-63.gif" />}
                 </div>
-                {!this.state.isLoadingMcq && this.state.currMcq && <Mcq {...this.state.currMcq} {...this.functions} />}
+                {!this.state.isLoadingMcq && this.state.currMcq && <Mcq key={this.state.currMcqInd} {...this.state.currMcq} {...this.functions} />}
             </div>
         )
     }

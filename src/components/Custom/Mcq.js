@@ -2,9 +2,14 @@
 import React from "react";
 
 
+// https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key
 class Mcq extends React.Component {
-    constructor(props){
-        super(props);
+    state = {...this.props}
+
+    // https://www.pluralsight.com/guides/how-to-use-radio-buttons-in-reactjs
+    onChangeMcqOptn = event =>{
+        var selectedChoice = event.target.value;
+        this.props.setCurrMcqAns(selectedChoice)
     }
 
     render() {
@@ -25,32 +30,18 @@ class Mcq extends React.Component {
                                 <div className="p-3 border-bottom">
                                     <div className="d-flex flex-row">
                                         <h3 className="text-danger">Q. </h3>
-                                        <h5 className="mt-1">{quesn}</h5>
+                                        <h5 className="mt-1">{this.state.quesn}</h5>
                                     </div>
-                                    <div className="mcq-radio">
-                                        <label>
-                                            <input type="radio" name="mcqOptn" value="brazil" />
-                                            <span>{choices[0]}</span>
-                                        </label>
-                                    </div>
-                                    <div className="mcq-radio">
-                                        <label>
-                                            <input type="radio" name="mcqOptn" value="Germany" />
-                                            <span>{choices[1]}</span>
-                                        </label>
-                                    </div>
-                                    <div className="mcq-radio">
-                                        <label>
-                                            <input type="radio" name="mcqOptn" value="Indonesia" />
-                                            <span>{choices[2]}</span>
-                                        </label>
-                                    </div>
-                                    <div className="mcq-radio">
-                                        <label>
-                                            <input type="radio" name="mcqOptn" value="Russia" />
-                                            <span>{choices[3]}</span>
-                                        </label>
-                                    </div>
+                                    {/* https://stackoverflow.com/questions/22876978/loop-inside-react-jsx */}
+                                    {this.state.choices}
+                                    {this.state.choices.map((choice, index) => (
+                                        <div key={choice} className="mcq-radio" onChange={this.onChangeMcqOptn}>
+                                            <label>
+                                                <input type="radio" name="mcqOptn" value={choice} />
+                                                <span>{choice}</span>
+                                            </label>
+                                        </div>
+                                    ))}                                
                                 </div>
                                 <div className="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
                                     <button className="btn btn-primary d-flex align-items-center btn-danger" type="button" onClick={this.props.prevQues}>
