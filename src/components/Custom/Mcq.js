@@ -47,6 +47,9 @@ class Mcq extends React.Component {
                                     <button className="btn btn-primary d-flex align-items-center btn-danger" type="button" onClick={this.props.prevQues}>
                                         <i className="fa fa-angle-left mt-1 mr-1"></i>&nbsp;previous
                                     </button>
+                                   {this.props.dispSubmit &&  <button className="btn btn-primary d-flex align-items-center btn-primary" type="button" onClick={this.props.submitMcqs}>
+                                        <i className="fa fa-angle-left mt-1 mr-1"></i>Submit
+                                    </button>}
                                     <button className="btn btn-primary border-success align-items-center btn-success" type="button" onClick={this.props.nextQues}>
                                         Next<i className="fa fa-angle-right"></i>
                                     </button>

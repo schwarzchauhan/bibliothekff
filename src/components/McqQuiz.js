@@ -15,7 +15,8 @@ class McqQuiz extends React.Component {
             allMcq: [],
             currMcqInd: null,
             currMcq: null, 
-            allMcqAns:Array(10).fill('')    // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
+            allMcqAns:Array(10).fill(''),    // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
+            dispSubmit: false
         };
     }
 
@@ -26,7 +27,7 @@ class McqQuiz extends React.Component {
                 this.setState({ 
                     isLoadingMcq: false,
                     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map#using_map_to_reformat_objects_in_an_array
-                    allMcq: data.map(({quesn, choices}) => ({quesn, choices})),
+                    allMcq: data.map(({quesn, choices, _id}) => ({quesn, choices, _id})),
                     currMcqInd: 0,
                     currMcq: {
                         quesn: data[0].quesn,
@@ -41,6 +42,16 @@ class McqQuiz extends React.Component {
                 this.setState({ isLoadingMcq: false, err })
                 console.error(err, err.message);
             })
+    }
+
+    // sbumit the mcq answer as a array with each element as object -- {_id:<idOfQues>, ans: <selctedChoice>}
+    sbmtMcqQuiz = () => {
+        console.error(this.state.allMcq.map(({quesn, choices, _id}) => ({_id})), this.state.allMcqAns );
+        var reqBodyArray =[];
+        for (let i = 0; i < 10; i++) {
+            reqBodyArray.push({_id: this.state.allMcq[i]._id, ans: this.state.allMcqAns[i]})
+        }
+        console.error('reqBodyArray', reqBodyArray);
     }
 
     // https://dev.to/vadims4/passing-down-functions-in-react-4618
@@ -76,7 +87,8 @@ class McqQuiz extends React.Component {
                     currMcq: {
                         quesn: this.state.allMcq[ind].quesn, 
                         choices: this.state.allMcq[ind].choices
-                    }
+                    }, 
+                    dispSubmit: ( (ind == 9) ? true: false )
                 }, () => {
                     console.error('this.state-nextQues', this.state.currMcqInd, this.state.currMcq);     
                 })
@@ -91,6 +103,10 @@ class McqQuiz extends React.Component {
             }, () => {
                 console.error('this.state-setCurrMcqAns', this.state.allMcqAns);     
             })        
+        },
+        // submit the mcq quiz answers
+        submitMcqs : () => {
+            this.sbmtMcqQuiz()
         }
     }
 
@@ -109,7 +125,7 @@ class McqQuiz extends React.Component {
                 <div className='cstm-ldr-icon'>
                     {this.state.isLoadingMcq && <img src="https://acegif.com/wp-content/uploads/loading-63.gif" />}
                 </div>
-                {!this.state.isLoadingMcq && this.state.currMcq && <Mcq key={this.state.currMcqInd} {...this.state.currMcq} {...this.functions} />}
+                {!this.state.isLoadingMcq && this.state.currMcq && <Mcq key={this.state.currMcqInd} {...this.state.currMcq} {...this.functions} dispSubmit={this.state.dispSubmit} />}
             </div>
         )
     }
