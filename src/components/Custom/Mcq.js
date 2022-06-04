@@ -24,7 +24,7 @@ class Mcq extends React.Component {
                                 <div className="bg-info p-3 border-bottom">
                                     <div className="d-flex flex-row justify-content-between align-items-center">
                                         <h4>MCQ Quiz</h4>
-                                        <span>(5 of 20)</span>
+                                        <span>({this.state.currMcqInd+1} of 10)</span>
                                     </div>
                                 </div>
                                 <div className="p-3 border-bottom">

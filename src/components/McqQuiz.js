@@ -10,7 +10,7 @@ class McqQuiz extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoadingMcq: true,
+            isLoading: true,
             err: null,
             allMcq: [],
             currMcqInd: null,
@@ -20,12 +20,20 @@ class McqQuiz extends React.Component {
         };
     }
 
+    toggleLoader = () => {
+        if(!this.state.isLoading){
+          this.setState({isLoading: true})
+        }else{
+          this.setState({isLoading: false})
+        }
+     }
+
     // to get random mcqs from the backend
     getMcqData() {
         McqServicee.getMcqQuiz()
             .then((data) => {
                 this.setState({ 
-                    isLoadingMcq: false,
+                    isLoading: false,
                     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map#using_map_to_reformat_objects_in_an_array
                     allMcq: data.map(({quesn, choices, _id}) => ({quesn, choices, _id})),
                     currMcqInd: 0,
@@ -39,7 +47,7 @@ class McqQuiz extends React.Component {
                 })
             })
             .catch((err) => {
-                this.setState({ isLoadingMcq: false, err })
+                this.setState({ isLoading: false, err })
                 console.error(err, err.message);
             })
     }
@@ -52,6 +60,16 @@ class McqQuiz extends React.Component {
             reqBodyArray.push({_id: this.state.allMcq[i]._id, ans: this.state.allMcqAns[i]})
         }
         console.error('reqBodyArray', reqBodyArray);
+        this.toggleLoader();
+        McqServicee.submitMcqQuiz(reqBodyArray)
+            .then((data) => {
+                console.error(data);
+                this.toggleLoader();
+            })
+            .catch((err) => {
+                console.error(err);
+                this.toggleLoader();
+            })
     }
 
     // https://dev.to/vadims4/passing-down-functions-in-react-4618
@@ -69,7 +87,8 @@ class McqQuiz extends React.Component {
                     currMcq: {
                         quesn: this.state.allMcq[ind].quesn, 
                         choices: this.state.allMcq[ind].choices
-                    }
+                    }, 
+                    dispSubmit: ( (ind == 9) ? true: false )
                 }, () => {
                     console.error('this.state-prevQues', this.state.currMcqInd, this.state.currMcq);     
                 })     
@@ -121,11 +140,12 @@ class McqQuiz extends React.Component {
     render() {
         return (
             <div>
+                {this.state.err}
                 {this.state.currMcqInd}
                 <div className='cstm-ldr-icon'>
-                    {this.state.isLoadingMcq && <img src="https://acegif.com/wp-content/uploads/loading-63.gif" />}
+                    {this.state.isLoading && <img src="https://acegif.com/wp-content/uploads/loading-63.gif" />}
                 </div>
-                {!this.state.isLoadingMcq && this.state.currMcq && <Mcq key={this.state.currMcqInd} {...this.state.currMcq} {...this.functions} dispSubmit={this.state.dispSubmit} />}
+                {!this.state.isLoading && this.state.currMcq && <Mcq key={this.state.currMcqInd} {...this.state.currMcq} {...this.functions} dispSubmit={this.state.dispSubmit} currMcqInd={this.state.currMcqInd}  />}
             </div>
         )
     }
