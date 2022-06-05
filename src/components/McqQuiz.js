@@ -57,7 +57,7 @@ class McqQuiz extends React.Component {
         console.error(this.state.allMcq.map(({quesn, choices, _id}) => ({_id})), this.state.allMcqAns );
         var reqBodyArray =[];
         for (let i = 0; i < 10; i++) {
-            reqBodyArray.push({_id: this.state.allMcq[i]._id, ans: this.state.allMcqAns[i]})
+            reqBodyArray.push({_id: this.state.allMcq[i]._id, ansGiven: this.state.allMcqAns[i]})
         }
         console.error('reqBodyArray', reqBodyArray);
         this.toggleLoader();
