@@ -2,6 +2,7 @@ import Mcq from './Custom/Mcq'
 import React from "react";
 import '../assets/styles/css/global.css'
 import McqServicee from '../services/McqServicee';
+import { Navigate } from 'react-router-dom';
 
 //TODO: show mcq selected when user again goes to the answered quesn(ie. selected mcq optn should still be red)
 
@@ -16,7 +17,8 @@ class McqQuiz extends React.Component {
             currMcqInd: null,
             currMcq: null, 
             allMcqAns:Array(10).fill(''),    // https://stackoverflow.com/questions/20007455/creating-array-of-empty-strings
-            dispSubmit: false
+            dispSubmit: false, 
+            showQuizResult: false
         };
     }
 
@@ -42,32 +44,26 @@ class McqQuiz extends React.Component {
                         choices: data[0].choices
                     }
                 }, () => {
-                    console.error('setState callback', this.state);
-                    console.error('this.state callbk', this.state.currMcqInd, this.state.currMcq);     
                 })
             })
             .catch((err) => {
                 this.setState({ isLoading: false, err })
-                console.error(err, err.message);
             })
     }
 
     // sbumit the mcq answer as a array with each element as object -- {_id:<idOfQues>, ans: <selctedChoice>}
     sbmtMcqQuiz = () => {
-        console.error(this.state.allMcq.map(({quesn, choices, _id}) => ({_id})), this.state.allMcqAns );
         var reqBodyArray =[];
         for (let i = 0; i < 10; i++) {
             reqBodyArray.push({_id: this.state.allMcq[i]._id, ansGiven: this.state.allMcqAns[i]})
         }
-        console.error('reqBodyArray', reqBodyArray);
         this.toggleLoader();
         McqServicee.submitMcqQuiz(reqBodyArray)
             .then((data) => {
-                console.error(data);
                 this.toggleLoader();
+                this.setState({showQuizResult: true, htmlResponse: data})
             })
             .catch((err) => {
-                console.error(err);
                 this.toggleLoader();
             })
     }
@@ -78,10 +74,8 @@ class McqQuiz extends React.Component {
         // go to previous quesn
         prevQues : () => {
             if(this.state.currMcqInd <= 0){
-                console.error('no previouse quesn');
             }else {
                 var ind = this.state.currMcqInd - 1;
-                console.error(ind);
                 this.setState({
                     currMcqInd: ind, 
                     currMcq: {
@@ -90,17 +84,14 @@ class McqQuiz extends React.Component {
                     }, 
                     dispSubmit: ( (ind == 9) ? true: false )
                 }, () => {
-                    console.error('this.state-prevQues', this.state.currMcqInd, this.state.currMcq);     
                 })     
             }
         },
         // go to next quesn
         nextQues : () => {
             if(this.state.currMcqInd >= 9){
-                console.error('no next quesn');
             }else {
                 var ind = this.state.currMcqInd + 1;
-                console.error(ind);
                 this.setState({
                     currMcqInd: ind, 
                     currMcq: {
@@ -109,7 +100,6 @@ class McqQuiz extends React.Component {
                     }, 
                     dispSubmit: ( (ind == 9) ? true: false )
                 }, () => {
-                    console.error('this.state-nextQues', this.state.currMcqInd, this.state.currMcq);     
                 })
             }
         }, 
@@ -120,7 +110,6 @@ class McqQuiz extends React.Component {
             this.setState({
                 allMcqAns: temp
             }, () => {
-                console.error('this.state-setCurrMcqAns', this.state.allMcqAns);     
             })        
         },
         // submit the mcq quiz answers
@@ -137,17 +126,22 @@ class McqQuiz extends React.Component {
         console.log('componentDidMount');
         this.getMcqData();
     }
+    // https://stackoverflow.com/questions/70621070/how-do-i-pass-props-to-next-screen-using-navigate
     render() {
-        return (
-            <div>
-                {this.state.err}
-                {this.state.currMcqInd}
-                <div className='cstm-ldr-icon'>
-                    {this.state.isLoading && <img src="https://acegif.com/wp-content/uploads/loading-63.gif" />}
+        if(this.state.showQuizResult){
+            return (<Navigate to="/view/quiz-response" state={ this.state.htmlResponse }></Navigate>)
+        }else {            
+            return (
+                <div>
+                    {this.state.err}
+                    {this.state.currMcqInd}
+                    <div className='cstm-ldr-icon'>
+                        {this.state.isLoading && <img src="https://acegif.com/wp-content/uploads/loading-63.gif" />}
+                    </div>
+                    {!this.state.isLoading && this.state.currMcq && <Mcq key={this.state.currMcqInd} {...this.state.currMcq} {...this.functions} dispSubmit={this.state.dispSubmit} currMcqInd={this.state.currMcqInd}  />}
                 </div>
-                {!this.state.isLoading && this.state.currMcq && <Mcq key={this.state.currMcqInd} {...this.state.currMcq} {...this.functions} dispSubmit={this.state.dispSubmit} currMcqInd={this.state.currMcqInd}  />}
-            </div>
-        )
+            )
+        }
     }
 }
 

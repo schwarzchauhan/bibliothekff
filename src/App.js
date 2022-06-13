@@ -6,6 +6,7 @@ import  Mcqform   from "./components/Forms/Mcqform";
 import  McqQuiz   from "./components/McqQuiz";
 import Navbar from './components/Navbar/Navbar';
 import Error404Pg from './components/pages/Error404Pg';
+import PreviewPage from './components/pages/PreviewPage';
 import { BrowserRouter as Router, Routes,  Switch, Route } from 'react-router-dom';
 
 // functional components
@@ -20,6 +21,7 @@ function App() {
         <Route path="/notfound" element={  <Error404Pg /> } />
         <Route path="/mcq/save" element={  <Mcqform /> } />
         <Route path="/quiz/mcq" element={  <McqQuiz /> } />
+        <Route path="/view/quiz-response" element={  <PreviewPage /> } />
       </Routes>
     </Router>
   );
