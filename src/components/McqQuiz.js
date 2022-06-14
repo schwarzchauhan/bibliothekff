@@ -132,7 +132,7 @@ class McqQuiz extends React.Component {
             return (<Navigate to="/view/quiz-response" state={ this.state.htmlResponse }></Navigate>)
         }else {            
             return (
-                <div>
+                <div  className='bg-rhein hght100pr'>
                     {this.state.err}
                     {this.state.currMcqInd}
                     <div className='cstm-ldr-icon'>
