@@ -96,9 +96,12 @@ dev dependencies
 
 - `/user/login` - for login 
 - `/notfound` - for HTTP 404 
+- `/quiz/mcq` - mcq quiz
 
 
 ## learning 
 pass props   \
 https://javascript.plainenglish.io/how-to-pass-props-from-child-to-parent-component-in-react-d90752ff4d01  \
 
+## remote debugging 
+<https://developer.chrome.com/docs/devtools/remote-debugging/>  \
