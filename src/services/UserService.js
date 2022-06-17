@@ -19,7 +19,7 @@ class UserService {
             // console.warn(err.message);
             // https://stackoverflow.com/questions/60434870/node-express-is-not-sending-a-custom-error-message
             // console.warn(err.response);
-            if(err.response && err.response.data && err.response.data.type == 'knownError'){
+            if(err.response && err.response.data && err.response.data.type == 'KnownError'){
               // console.warn(err, err.message);
               err.message = err.response.data.message;
               // console.warn(err, err.message);

@@ -61,3 +61,9 @@ html, body, #root {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.bg-cover {
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
