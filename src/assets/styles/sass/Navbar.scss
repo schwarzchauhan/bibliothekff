@@ -9,6 +9,25 @@
   display: none;
 }
 
+.navbar-cont {
+    .nav-item {
+        background-color: $bgColor;
+        display: inline-block;
+        padding: 5px;
+        margin-right: 5px;
+        border-radius: 5px;
+        &:hover {
+            background-color: aqua;
+        }
+        .nav-links {
+            font-size: 25px;
+            .navIcon {
+                width: 40px;
+            }
+        }        
+    }    
+}
+
 /* clearfix hack */
 /* https://www.w3schools.com/howto/howto_css_clearfix.asp */
 .navbar-cont::after {
@@ -18,17 +37,7 @@
     display: block;
 }
 
-.nav-item {
-    background-color: $bgColor;
-    display: inline-block;
-    padding: 5px;
-    margin-right: 5px;
-    border-radius: 5px;
-}
 
-.nav-item:hover {
-    background-color: aqua;
-}
 
 @media (max-width: 768px ) {
     .navbar-cont .nav-menu-icon {

@@ -7,6 +7,23 @@
   display: none;
 }
 
+.navbar-cont .nav-item {
+  background-color: rgba(213, 228, 148, 0.8705882353);
+  display: inline-block;
+  padding: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+.navbar-cont .nav-item:hover {
+  background-color: aqua;
+}
+.navbar-cont .nav-item .nav-links {
+  font-size: 25px;
+}
+.navbar-cont .nav-item .nav-links .navIcon {
+  width: 40px;
+}
+
 /* clearfix hack */
 /* https://www.w3schools.com/howto/howto_css_clearfix.asp */
 .navbar-cont::after {
@@ -14,18 +31,6 @@
   content: "";
   clear: both;
   display: block;
-}
-
-.nav-item {
-  background-color: #d5e494de;
-  display: inline-block;
-  padding: 5px;
-  margin-right: 5px;
-  border-radius: 5px;
-}
-
-.nav-item:hover {
-  background-color: aqua;
 }
 
 @media (max-width: 768px) {

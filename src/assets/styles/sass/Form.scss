@@ -1,65 +1,105 @@
 @import './Variables/Variables.scss';
 
 .mcq-form-cont {
-    background-image: url('https://4kwallpapers.com/images/walls/thumbs_2t/4523.jpg');
-    height: 100%;
-    padding: 10px;
-    .mcq-form-inner {
-        background-image: linear-gradient(to bottom right, rgba(205, 92, 92, 0.7), rgba(250, 235, 215, 0.8));
-        // border: 2px solid indianred;
-        border-radius: 10px;
-        margin: auto;
-        padding: 20px;
-        width: 40%;
-        .dspFlex-75-20per{
-          display: flex;
-          justify-content: space-between;
-          .fl-item1{
-            flex-basis: 75%;
-            input {
-              padding: 5px;
-              width: 100%;
-            }
-          }
-          .fl-item2{
-            flex-basis: 20%;
-            button{
-              width: 100%;
-            }
-          }
-        }
-        .form-field-row{
-            // display: flex;
-            // justify-content: space-between;
-            margin: 20px 0px;
-        }      
-        .form-inpt-rw {
-          margin: 20px 0px;
-          input {
-            padding: 5px 0px;
-          }
-        }
-        .formSbmitBtn {
-          background-color: $sbmitColor;
-          border-radius: 20px;
-          border-style: solid;
-          color: $whitTxt;
-          font-weight: bold;
-          padding: 10px;
-          width: 100%;
-          // The parent selector '&' can be used to add pseudo-classes to the outer selector
-          &:hover{
-            opacity: 0.9;
-          }
-        }
-    }
+	background-image: url('https://4kwallpapers.com/images/walls/thumbs_2t/4523.jpg');
+	height: 100%;
+	padding: 10px;
+
+	.mcq-form-inner {
+		background-image: linear-gradient(to bottom right, rgba(205, 92, 92, 0.7), rgba(250, 235, 215, 0.8));
+		// border: 2px solid indianred;
+		border-radius: 10px;
+		margin: auto;
+		padding: 20px;
+		width: 40%;
+
+		.dspFlex-75-20per {
+			display: flex;
+			justify-content: space-between;
+
+			.fl-item1 {
+				flex-basis: 75%;
+
+				input {
+					padding: 5px;
+					width: 100%;
+				}
+			}
+
+			.fl-item2 {
+				flex-basis: 20%;
+
+				button {
+					width: 100%;
+				}
+			}
+		}
+
+		.form-field-row {
+			// display: flex;
+			// justify-content: space-between;
+			margin: 20px 0px;
+		}
+
+		.form-inpt-rw {
+			margin: 20px 0px;
+
+			input {
+				padding: 5px 0px;
+			}
+		}
+
+		.formSbmitBtn {
+			background-color: $sbmitColor;
+			border-radius: 20px;
+			border-style: solid;
+			color: $whitTxt;
+			font-weight: bold;
+			padding: 10px;
+			width: 100%;
+
+			// The parent selector '&' can be used to add pseudo-classes to the outer selector
+			&:hover {
+				opacity: 0.9;
+			}
+		}
+	}
+}
+
+.mcq-cont {
+	.mcq-radio {
+
+		input[type="radio"] {
+			appearance: none;
+		}
+
+		input[type="radio"]+span {
+			cursor: pointer;
+			padding: 4px 0px;
+			border: 1px solid red;
+			display: inline-block;
+			color: red;
+			width: 100px;
+			text-align: center;
+			border-radius: 3px;
+			margin-top: 7px;
+			text-transform: uppercase;
+		}
+
+		input[type="radio"]:checked+span {
+			border-color: red;
+			background-color: red;
+			color: #fff;
+		}
+
+	}
 }
 
 
 @media (max-width: 768px) {
-    .mcq-form-cont{
-        .mcq-form-inner {
-            width: 90%;
-        }
-    }
+	.mcq-form-cont {
+		.mcq-form-inner {
+			width: 90%;
+		}
+	}
 }

@@ -86,6 +86,8 @@ dev dependencies
 [sass - parent selctor](https://sass-lang.com/documentation/style-rules/parent-selector)  \
 [conditional operator in reactjs](https://reactjs.org/docs/conditional-rendering.html#inline-if-with-logical--operator)
 
+- [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)  
+ [cdn](https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css)
 
 ## hosting on netlify
 > `CI=false npm run build`
@@ -94,5 +96,12 @@ dev dependencies
 
 - `/user/login` - for login 
 - `/notfound` - for HTTP 404 
+- `/quiz/mcq` - mcq quiz
 
 
+## learning 
+pass props   \
+https://javascript.plainenglish.io/how-to-pass-props-from-child-to-parent-component-in-react-d90752ff4d01  \
+
+## remote debugging 
+<https://developer.chrome.com/docs/devtools/remote-debugging/>  \

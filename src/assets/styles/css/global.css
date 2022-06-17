@@ -35,6 +35,10 @@ html, body, #root {
     width: 100%;
 }
 
+.hght100pr {
+    height: 100%;
+}
+
 /* button custom propt */
 
 .btn-dflt{
@@ -48,3 +52,12 @@ html, body, #root {
     transform: translate(-50%, 20%);
 }
 
+
+/* background */
+
+.bg-rhein {
+    background-image: url("../../img/rhein.jpg") ;
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
