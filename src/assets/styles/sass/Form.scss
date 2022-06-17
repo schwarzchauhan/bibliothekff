@@ -100,6 +100,8 @@
 	.login-form-inner {
 		margin: auto;
 		max-width: 425px;
+		background-color: rgba(255, 127, 80, 0.25);
+		border-radius: 10px;
 	}
 
 	.login-error {
@@ -107,7 +109,13 @@
 	}
 
 	.login-form-group input {
+		border-radius: 3px;
+		border-width: 0 0 3px;
 		width: 100%;
+		&:focus {
+			outline: none;
+			border-bottom-color: $brdrBtmClr;
+		}
 	}
 
 	.login-btn {

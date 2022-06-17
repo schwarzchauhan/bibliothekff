@@ -144,7 +144,7 @@ export default function LoginForm() {
                             )
                         }
                         <div className='login-form-group p-2'>
-                            <label htmlFor='name'>Username or email </label>
+                            <label htmlFor='name'><i class="lni lni-user"></i> Username or email </label>
                             <br />
                             <input type="text" name="unameEmail" id="name" onChange={e => setDetails({ ...details, unameEmail: e.target.value })} value={details.unameEmail} required />
                         </div>
@@ -153,7 +153,7 @@ export default function LoginForm() {
                     <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email} />
                 </div> */}
                         <div className='login-form-group p-2'>
-                            <label htmlFor='password'>Password: </label>
+                            <label htmlFor='password'><i class="lni lni-lock-alt"></i> Password: </label>
                             <br />
                             <input type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} required />
                         </div>

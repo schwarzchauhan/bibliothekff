@@ -103,5 +103,8 @@ dev dependencies
 pass props   \
 https://javascript.plainenglish.io/how-to-pass-props-from-child-to-parent-component-in-react-d90752ff4d01  \
 
+css \
+input:focus <https://stackoverflow.com/questions/16156594/how-to-change-border-color-of-textarea-on-focus>  \
+
 ## remote debugging 
 <https://developer.chrome.com/docs/devtools/remote-debugging/>  \
