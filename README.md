@@ -89,6 +89,8 @@ dev dependencies
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)  
  [cdn](https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css)
 
+- [custom axios](https://blog.clairvoyantsoft.com/intercepting-requests-responses-using-axios-df498b6cab62)
+
 ## hosting on netlify
 > `CI=false npm run build`
 
@@ -103,5 +105,56 @@ dev dependencies
 pass props   \
 https://javascript.plainenglish.io/how-to-pass-props-from-child-to-parent-component-in-react-d90752ff4d01  \
 
+css \
+input:focus <https://stackoverflow.com/questions/16156594/how-to-change-border-color-of-textarea-on-focus>  \
+
 ## remote debugging 
 <https://developer.chrome.com/docs/devtools/remote-debugging/>  \
+
+
+##  running locally
+
+<https://stackoverflow.com/questions/47412363/how-to-open-a-create-react-app-from-another-computer-connected-to-the-same-netwo>
+
+`ipconfig` -- to check wifi
+
+Wireless LAN adapter Wi-Fi:  \
+IPv4 Address. . . . . . . . . . . : 192.168.0.104
+
+```bash
+#! /bin/bash
+
+echo "BASH SCRIPT TO RUN BIBLIOTHEK FRONTEND SERVER"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "Press 1 to run on local host"
+echo "Press 2 to run on router ip"
+read -p "Your Choice : " CHOICE
+
+case "$CHOICE" in
+    [1])
+        echo "Running on localhost :)"
+        cd ./bibliothekff
+        npm run start
+        ;;
+    [2])
+        echo "Running on router ip :)"
+        cd ./bibliothekff
+        HOST=192.168.0.106 npm run start
+        ;;
+    *)
+        echo "Terminaing, invalid choice! :("
+        ;;
+esac
+
+# https://linuxize.com/post/bash-case-statement/
+```
+
+<https://stackoverflow.com/questions/47412363/how-to-open-a-create-react-app-from-another-computer-connected-to-the-same-netwo>
+
+
+`chk ip address ==`  \
+<https://support.microsoft.com/en-us/windows/find-your-ip-address-in-windows-f21a9bbc-c582-55cd-35e0-73431160a1b9>
+
+## cookie 
+<https://medium.com/@ryanchenkie_40935/react-authentication-how-to-store-jwt-in-a-cookie-346519310e81>  \
+<https://stackoverflow.com/questions/39826992/how-can-i-set-a-cookie-in-react>  \

@@ -1,6 +1,6 @@
 import { useState, useTransition } from 'react';
 import McqService from '../../services/McqService';
-import '../../assets/styles/css/Form.css'
+import '../../assets/styles/sass/Form.scss'
 import '../../assets/styles/css/global.css'
 
 // https://www.w3schools.com/react/react_forms.asp
@@ -74,11 +74,13 @@ export default function Mcqform() {
     return (
       <div className='mcq-form-cont'>
         <div className='mcq-form-inner'>
+          <div>
+            { (err) ? ( <div className='save-error'>{err}</div>) : ( "" ) }
+          </div>
           <form onSubmit={handleSubmit}>
             
             <div className='cstm-ldr-icon'>
               { isSubmitting && <img src="https://acegif.com/wp-content/uploads/loading-63.gif" /> }
-              {err}
             </div>
 
             <div>

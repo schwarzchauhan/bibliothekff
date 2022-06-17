@@ -1,4 +1,4 @@
-import axios from "axios";
+import customAxios from "../utils/customAxios";
 
 class McqService {
     constructor() {
@@ -9,17 +9,12 @@ class McqService {
         // console.log(data, typeof data);
         const url = this.domain + "/api/mcq/save";
         return new Promise((resolve, reject) => {
-            axios.post(url, data)
+            customAxios.post(url, data)
                 .then((res) => {
-                    // res.data  {"_id": "61f6538cdfef69387709ec03","email": "harshchauhan0994@gmail.com","password": "4321","name": "harsh chauhan"}
+                    // {"quesn":"june252","choices":["first choice","second choice","third choice","fourth choice"],"ans":"fourth choice","_id":"62b710fce6e409d868920367","__v":0}
                     return resolve(res.data);
                 })
                 .catch((err) => {
-                    if (err.response && err.response.data && err.response.data.type == 'KnownError') {
-                        err.message = err.response.data.message;
-                    } else {
-                        err.message = 'Oops! Unexpected Error occurred.'
-                    }
                     return reject(err);
                 })
         })

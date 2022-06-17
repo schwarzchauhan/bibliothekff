@@ -3,6 +3,7 @@ import  LoginForm   from "./components/LoginForm/LoginForm";
 import  Profile   from "./components/Profile";
 import  Homepage   from "./components/Homepage";
 import  Mcqform   from "./components/Forms/Mcqform";
+import  Register   from "./components/Forms/Register";
 import  McqQuiz   from "./components/McqQuiz";
 import Navbar from './components/Navbar/Navbar';
 import Error404Pg from './components/pages/Error404Pg';
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Homepage /> } />
         <Route path="/user/login" element={ <LoginForm /> } />
+        <Route path="/user/register" element={ <Register /> } />
         <Route path="/dashboard" element={ <Profile authorized={true}  /> } />
         <Route path="/notfound" element={  <Error404Pg /> } />
         <Route path="/mcq/save" element={  <Mcqform /> } />
