@@ -29,6 +29,24 @@ class UserService {
 
         })
     }
+    register = (data) => {
+      // console.log(data, typeof data);
+      const url = this.domain  + "/api/user/register";
+      return new Promise((resolve,reject) => {
+        axios.post(url, data)
+        .then( (res) => {
+          return resolve(res.data);
+        } )
+        .catch((err)=> {
+          // https://stackoverflow.com/questions/60434870/node-express-is-not-sending-a-custom-error-message
+          if(err.response && err.response.data && err.response.data.type == 'KnownError'){
+            err.message = err.response.data.message;
+          }
+          return reject(err);
+        })
+
+      })
+  }
 }
 
 export default UserService;
