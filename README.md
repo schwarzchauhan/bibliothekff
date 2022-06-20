@@ -108,3 +108,20 @@ input:focus <https://stackoverflow.com/questions/16156594/how-to-change-border-c
 
 ## remote debugging 
 <https://developer.chrome.com/docs/devtools/remote-debugging/>  \
+
+
+##  running locally
+
+<https://stackoverflow.com/questions/47412363/how-to-open-a-create-react-app-from-another-computer-connected-to-the-same-netwo>
+
+`ipconfig` -- to check wifi
+
+Wireless LAN adapter Wi-Fi:  \
+IPv4 Address. . . . . . . . . . . : 192.168.0.104
+
+
+<https://stackoverflow.com/questions/47412363/how-to-open-a-create-react-app-from-another-computer-connected-to-the-same-netwo>
+
+
+`chk ip address ==`  \
+<https://support.microsoft.com/en-us/windows/find-your-ip-address-in-windows-f21a9bbc-c582-55cd-35e0-73431160a1b9>

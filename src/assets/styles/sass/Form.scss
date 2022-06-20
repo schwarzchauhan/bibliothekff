@@ -97,6 +97,7 @@
 
 .login-form-cont {
 	height: 100%;
+	overflow-y: auto;
 	.login-form-inner {
 		margin: auto;
 		max-width: 425px;

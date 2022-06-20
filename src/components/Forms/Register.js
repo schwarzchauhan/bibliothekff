@@ -35,7 +35,6 @@ export default function Register() {
     const submitHandler = async (e) => {
         try {
             e.preventDefault();
-            console.error('details', details);
             const data = await Register(details);
             navigate("/user/login")
         } catch (err) {
