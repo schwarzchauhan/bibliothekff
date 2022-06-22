@@ -100,14 +100,6 @@ export default function LoginForm() {
                 const response = await userService.loginRequest(body);
                 return response;
             }
-
-            console.warn('is reaching here');
-            // // making a post request
-            // const url = baseUrl + '/user/login'
-            // const body = {
-            //   email: details.email, 
-            //   password: details.password
-            // };
         } catch (err) {
             // console.error("error while login ", err);
             throw err;
