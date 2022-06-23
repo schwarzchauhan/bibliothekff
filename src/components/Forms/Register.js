@@ -79,12 +79,12 @@ export default function Register() {
                             )
                         }
                         <div className='login-form-group p-2'>
-                            <label htmlFor='email'><i class="lni lni-user"></i> Email </label>
+                            <label htmlFor='email'><i className="lni lni-user"></i> Email </label>
                             <br />
                             <input type="text" name="email" id="name" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} required />
                         </div>
                         <div className='login-form-group p-2'>
-                            <label htmlFor='password'><i class="lni lni-lock-alt"></i> Password: </label>
+                            <label htmlFor='password'><i className="lni lni-lock-alt"></i> Password: </label>
                             <br />
                             <input type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} required />
                         </div>
