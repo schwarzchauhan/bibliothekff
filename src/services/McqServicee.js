@@ -1,4 +1,7 @@
+import customAxios from "../utils/customAxios";
 import axios from "axios";
+import Cookies from "universal-cookie"
+export const cookies = new Cookies()
 
 const Bknd = {
     domain: process.env.REACT_APP_BACKEND_IP
@@ -6,20 +9,16 @@ const Bknd = {
 
 const McqServicee = {
     getMcqQuiz : () => {
+        console.log(cookies.get('authToken'));
         const lang = 'de';
         const noOfMcqs = 10;
         const url = Bknd.domain + `/api/quiz/${lang}/${noOfMcqs}`;
         return new Promise((resolve, reject) => {
-            axios.get(url)
+            customAxios.get(url)
                 .then((res) => {
                     return resolve(res.data);
                 })
                 .catch((err) => {
-                    if (err.response && err.response.data && err.response.data.type == 'KnownError') {
-                        err.message = err.response.data.message;
-                    } else {
-                        err.message = 'Oops! Unexpected Error occurred.'
-                    }
                     return reject(err);
                 })
         })
@@ -28,16 +27,11 @@ const McqServicee = {
     submitMcqQuiz : (data) => {
         const url = Bknd.domain + `/api/quiz/submit`;
         return new Promise((resolve, reject) => {
-            axios.post(url, data)
+            customAxios.post(url, data)
                 .then((res) => {
                     return resolve(res.data);
                 })
                 .catch((err) => {
-                    if (err.response && err.response.data && err.response.data.type == 'KnownError') {
-                        err.message = err.response.data.message;
-                    } else {
-                        err.message = 'Oops! Unexpected Error occurred.'
-                    }
                     return reject(err);
                 })
         })

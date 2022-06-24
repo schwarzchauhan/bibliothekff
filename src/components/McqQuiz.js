@@ -47,7 +47,7 @@ class McqQuiz extends React.Component {
                 })
             })
             .catch((err) => {
-                this.setState({ isLoading: false, err })
+                this.setState({ isLoading: false, err: err.message })
             })
     }
 

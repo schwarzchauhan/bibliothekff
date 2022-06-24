@@ -89,6 +89,8 @@ dev dependencies
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)  
  [cdn](https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css)
 
+- [custom axios](https://blog.clairvoyantsoft.com/intercepting-requests-responses-using-axios-df498b6cab62)
+
 ## hosting on netlify
 > `CI=false npm run build`
 
@@ -119,9 +121,19 @@ input:focus <https://stackoverflow.com/questions/16156594/how-to-change-border-c
 Wireless LAN adapter Wi-Fi:  \
 IPv4 Address. . . . . . . . . . . : 192.168.0.104
 
+```bash
+#! /bin/bash
+
+cd ./bibliothekff
+HOST=<local router ip addr> npm run start
+```
 
 <https://stackoverflow.com/questions/47412363/how-to-open-a-create-react-app-from-another-computer-connected-to-the-same-netwo>
 
 
 `chk ip address ==`  \
 <https://support.microsoft.com/en-us/windows/find-your-ip-address-in-windows-f21a9bbc-c582-55cd-35e0-73431160a1b9>
+
+## cookie 
+<https://medium.com/@ryanchenkie_40935/react-authentication-how-to-store-jwt-in-a-cookie-346519310e81>  \
+<https://stackoverflow.com/questions/39826992/how-can-i-set-a-cookie-in-react>  \
