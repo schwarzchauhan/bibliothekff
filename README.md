@@ -124,8 +124,29 @@ IPv4 Address. . . . . . . . . . . : 192.168.0.104
 ```bash
 #! /bin/bash
 
-cd ./bibliothekff
-HOST=<local router ip addr> npm run start
+echo "BASH SCRIPT TO RUN BIBLIOTHEK FRONTEND SERVER"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "Press 1 to run on local host"
+echo "Press 2 to run on router ip"
+read -p "Your Choice : " CHOICE
+
+case "$CHOICE" in
+    [1])
+        echo "Running on localhost :)"
+        cd ./bibliothekff
+        npm run start
+        ;;
+    [2])
+        echo "Running on router ip :)"
+        cd ./bibliothekff
+        HOST=192.168.0.106 npm run start
+        ;;
+    *)
+        echo "Terminaing, invalid choice! :("
+        ;;
+esac
+
+# https://linuxize.com/post/bash-case-statement/
 ```
 
 <https://stackoverflow.com/questions/47412363/how-to-open-a-create-react-app-from-another-computer-connected-to-the-same-netwo>
