@@ -39,6 +39,10 @@ html, body, #root {
     height: 100%;
 }
 
+.ovrFlwYato {
+    overflow-y: auto;
+}
+
 /* button custom propt */
 
 .btn-dflt{
@@ -57,6 +61,12 @@ html, body, #root {
 
 .bg-rhein {
     background-image: url("../../img/rhein.jpg") ;
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cover {
     background-attachment:fixed;
     background-repeat: no-repeat;
     background-size: cover;
