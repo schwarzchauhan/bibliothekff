@@ -1,5 +1,4 @@
 import customAxios from "../utils/customAxios";
-import axios from "axios";
 import Cookies from "universal-cookie"
 export const cookies = new Cookies()
 
