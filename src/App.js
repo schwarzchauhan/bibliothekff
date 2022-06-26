@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={ <Homepage /> } />
         <Route path="/user/login" element={ <LoginForm /> } />
         <Route path="/user/register" element={ <Register /> } />
-        <Route path="/dashboard" element={ <Profile authorized={true}  /> } />
+        <Route path="/dashboard/:username" element={ <Profile  /> } />
         <Route path="/notfound" element={  <Error404Pg /> } />
         <Route path="/mcq/save" element={  <Mcqform /> } />
         <Route path="/quiz/mcq" element={  <McqQuiz /> } />

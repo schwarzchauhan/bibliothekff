@@ -1,3 +1,4 @@
+import customAxios from "../utils/customAxios";
 import axios  from "axios";
 import Cookies from "universal-cookie"
 export const cookies = new Cookies()
@@ -49,6 +50,21 @@ class UserService {
         })
 
       })
+  }
+
+  getProfileData = (data) => {
+    const url = this.domain + `/api/user/dashboard/${data.username}`;
+    return new Promise(resolve => {
+      customAxios.get(url)
+      .then( (res) => {
+        resolve(res.data);
+      })
+      .catch( (err) => {
+        console.warn(err);
+        console.warn(err.message);
+        resolve(err);
+      } )
+    })
   }
 }
 
