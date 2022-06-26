@@ -1,0 +1,20 @@
+@import './Variables/Variables.scss';
+
+.profile-cont {
+
+    .card {
+        .profileImg {
+            img {
+                transition: all 0.5s
+            }
+        }
+        .profileImg {
+            img:hover {
+                transform: scale(1.5)
+            }
+        }
+    }
+    .createdAt-date {
+        background-color: $bgGry;
+    }
+}
