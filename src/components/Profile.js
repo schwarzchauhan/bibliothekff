@@ -6,7 +6,7 @@ import Toast from 'react-bootstrap/Toast'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/styles/css/global.css'
 import CustomProfileCard from '../components/Custom/CustomProfileCard'
-
+import '../assets/styles/sass/Profile.scss'
 
 function Profile(props) {
     // console.warn("props", props)
@@ -34,7 +34,7 @@ function Profile(props) {
     const toggleShowLoginSuccess = () => setShowLoginSuccess(!showLoginSuccess);
 
     return (
-        <div>
+        <div className='profile-cont'>
             <div className='cstm-ldr-icon'>
                 <Toast show={showLoginSuccess} onClose={toggleShowLoginSuccess}>
                     <Toast.Header>
