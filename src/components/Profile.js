@@ -47,7 +47,6 @@ function Profile(props) {
             <div className="profile-header">
                 <div className='bg-dark p-3 text-light text-uppercase fw-bold fs-3'>{profileData.name}</div>
                 {/* <img src={profileData.imgUrl} alt="Profile image not available" /> */}
-                <Image src={profileData.imgUrl} roundedCircle />
             </div>
             <div className='bg-info'>
                 <CustomProfileCard {...profileData} />

@@ -8,7 +8,7 @@ function Profile(props) {
         <div className="card p-4">
           <div className="profileImg d-flex flex-column justify-content-center align-items-center">
             <button className="btn btn-secondary">
-              <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
+              <img src={props.imgUrl} height="100" width="100" />
             </button>
             <span className="mt-3 fw-bold fs-5 text-uppercase">{props.name}</span>
             <span className="fw-bold fs-6">@{props.username}</span>
