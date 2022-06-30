@@ -8,11 +8,9 @@
                 transition: all 0.5s
             }
         }
-        &:hover {
-            .profileImg {
-                img {
-                    transform: scale(1.5)
-                }
+        .profileImg {
+            img:hover {
+                transform: scale(1.5)
             }
         }
     }

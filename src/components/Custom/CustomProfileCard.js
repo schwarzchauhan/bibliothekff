@@ -2,14 +2,50 @@ import React, { useEffect, useState } from 'react';
 
 
 function Profile(props) {
+    
+
+  const [picture, setPicture] = useState({});
+    
+  const uploadPicture = (e) => {
+    setPicture({
+        /* contains the preview, if you want to show the picture to the user
+           you can access it with this.state.currentPicture
+       */
+        picturePreview : URL.createObjectURL(e.target.files[0]),
+        /* this contains the file we want to send */
+        pictureAsFile : e.target.files[0]
+    }, () => {
+      console.error(picture);
+    })
+  };
+
+  const setImageAction = () => {
+    const formData = new FormData();
+    formData.append(
+        "image",
+        this.state.pictureAsFile
+    );
+    // do your post request
+  };
 
     return (
         <div className="container p-3 d-flex justify-content-center">
         <div className="card p-4">
           <div className="profileImg d-flex flex-column justify-content-center align-items-center">
             <button className="btn btn-secondary">
-              <img src={props.imgUrl} height="100" width="100" />
+            {picture.picturePreview &&  <img src={picture.picturePreview} alt="" height="100" width="100" />}
+              {!picture.picturePreview &&  <img src={props.imgUrl} height="100" width="100" />}
             </button>
+            <button className="btn btn-secondary">
+              <form onSubmit={setImageAction}>
+                <input type="file" name="image" onChange={uploadPicture} />
+                <br />
+                <br />
+                <button className='btn btn-primary' type="submit" name="upload">
+                  Upload
+                </button>
+              </form>
+            </button>     
             <span className="mt-3 fw-bold fs-5 text-uppercase">{props.name}</span>
             <span className="fw-bold fs-6">@{props.username}</span>
             <div className="d-flex flex-row justify-content-center align-items-center gap-2">
