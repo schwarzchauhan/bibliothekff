@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import UserService from '../../services/UserService'
 
 
 function Profile(props) {
     
-
+  const userService = new UserService();
   const [picture, setPicture] = useState({});
     
   const uploadPicture = (e) => {
@@ -14,19 +15,32 @@ function Profile(props) {
         picturePreview : URL.createObjectURL(e.target.files[0]),
         /* this contains the file we want to send */
         pictureAsFile : e.target.files[0]
-    }, () => {
-      console.error(picture);
     })
   };
 
-  const setImageAction = () => {
-    const formData = new FormData();
-    formData.append(
-        "image",
-        this.state.pictureAsFile
-    );
-    // do your post request
+  const setImageAction = async () => {
+    try {
+    console.log(picture);
+      const formData = new FormData();
+      formData.append(
+          "image",
+          picture.pictureAsFile
+      );
+      console.error('formData', formData);
+      // do your post request
+      const link = await userService.uploadImg(formData);
+      console.error('link', link);
+      alert('immmmmmmmmmmmm')
+    } catch (error) {
+      console.error('error', error);
+    }
   };
+
+  useEffect(() => {
+    alert('pppp')
+    // updated useerdeails
+    console.log(picture);
+  }, [picture]);
 
     return (
         <div className="container p-3 d-flex justify-content-center">
@@ -36,7 +50,7 @@ function Profile(props) {
             {picture.picturePreview &&  <img src={picture.picturePreview} alt="" height="100" width="100" />}
               {!picture.picturePreview &&  <img src={props.imgUrl} height="100" width="100" />}
             </button>
-            <button className="btn btn-secondary">
+            <div>
               <form onSubmit={setImageAction}>
                 <input type="file" name="image" onChange={uploadPicture} />
                 <br />
@@ -45,7 +59,7 @@ function Profile(props) {
                   Upload
                 </button>
               </form>
-            </button>     
+            </div>     
             <span className="mt-3 fw-bold fs-5 text-uppercase">{props.name}</span>
             <span className="fw-bold fs-6">@{props.username}</span>
             <div className="d-flex flex-row justify-content-center align-items-center gap-2">
