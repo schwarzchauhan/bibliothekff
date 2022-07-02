@@ -69,7 +69,6 @@ class UserService {
 
   uploadImg = (data) => {
     console.error('data', data);
-    alert('okkk')
       // console.log(data, typeof data);
       const url = this.domain  + "/api/upload/img";
       return new Promise((resolve,reject) => {

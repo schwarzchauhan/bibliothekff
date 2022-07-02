@@ -18,10 +18,11 @@ function Profile(props) {
     })
   };
 
-  const setImageAction = async () => {
+  const setImageAction = async (event) => {
     try {
+      event.preventDefault();
     console.log(picture);
-      const formData = new FormData();
+      var formData = new FormData();
       formData.append(
           "image",
           picture.pictureAsFile
@@ -30,14 +31,12 @@ function Profile(props) {
       // do your post request
       const link = await userService.uploadImg(formData);
       console.error('link', link);
-      alert('immmmmmmmmmmmm')
     } catch (error) {
       console.error('error', error);
     }
   };
 
   useEffect(() => {
-    alert('pppp')
     // updated useerdeails
     console.log(picture);
   }, [picture]);
