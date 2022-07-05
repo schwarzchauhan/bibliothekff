@@ -54,15 +54,15 @@ class UserService {
 
   getProfileData = (data) => {
     const url = this.domain + `/api/user/dashboard/${data.username}`;
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       customAxios.get(url)
       .then( (res) => {
-        resolve(res.data);
+        return resolve(res.data);
       })
       .catch( (err) => {
         console.warn(err);
         console.warn(err.message);
-        resolve(err);
+        return reject(err);
       } )
     })
   }

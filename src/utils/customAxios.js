@@ -28,6 +28,8 @@ const responseHandler = response => {
 };
 
 const errorHandler = err => {
+    if(err && err.response && err.response.status == 401)
+        window.location = '/user/login'
     if (err.response && err.response.data && err.response.data.type == 'KnownError') {
         err.message = err.response.data.message;
     } else {
