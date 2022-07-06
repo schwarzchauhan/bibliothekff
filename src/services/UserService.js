@@ -1,3 +1,4 @@
+import customAxios from "../utils/customAxios";
 import axios  from "axios";
 import Cookies from "universal-cookie"
 export const cookies = new Cookies()
@@ -45,6 +46,37 @@ class UserService {
           if(err.response && err.response.data && err.response.data.type == 'KnownError'){
             err.message = err.response.data.message;
           }
+          return reject(err);
+        })
+
+      })
+  }
+
+  getProfileData = (data) => {
+    const url = this.domain + `/api/user/dashboard/${data.username}`;
+    return new Promise((resolve, reject) => {
+      customAxios.get(url)
+      .then( (res) => {
+        return resolve(res.data);
+      })
+      .catch( (err) => {
+        console.warn(err);
+        console.warn(err.message);
+        return reject(err);
+      } )
+    })
+  }
+
+  uploadImg = (data) => {
+    console.error('data', data);
+      // console.log(data, typeof data);
+      const url = this.domain  + "/api/upload/img";
+      return new Promise((resolve,reject) => {
+        customAxios.post(url, data)
+        .then( (res) => {
+          return resolve(res.data);
+        } )
+        .catch((err)=> {
           return reject(err);
         })
 

@@ -96,9 +96,10 @@ dev dependencies
 
 # routes 
 
-- `/user/login` - for login 
-- `/notfound` - for HTTP 404 
-- `/quiz/mcq` - mcq quiz
+`/user/login` - for login   
+`/notfound` - for HTTP 404  
+`/quiz/mcq` - mcq quiz  
+`/dashboard/:username` - profile of a user
 
 
 ## learning 

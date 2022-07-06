@@ -61,7 +61,7 @@ export default function LoginForm() {
             e.preventDefault();
             const data = await Login(details);
             console.warn('submithandler', data);
-            navigate("/dashboard")
+            navigate(`/dashboard/${data.username}`)
         } catch (err) {
             // console.error('submithandler ~~ ', err, err instanceof Error);
             setErrMsg(err.message)
@@ -151,6 +151,9 @@ export default function LoginForm() {
                         </div>
                         <div className='login-form-group p-2 mt-2'>
                             <input type="submit" value="LOGIN" className='login-btn' />
+                        </div>
+                        <div className='p-2 mt-4 text-center'>
+                            Don't have an account yet, <span className='fw-bold bgGry px-2 pb-1 rounded'>Sign Up</span> 
                         </div>
                     </div>
                 </form>

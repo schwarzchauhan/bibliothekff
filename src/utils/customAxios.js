@@ -8,7 +8,6 @@ export const cookies = new Cookies()
 const customAxios = axios.create({
     baseURL: `${process.env.REACT_APP_BACKEND_IP}/api`,
     timeout: 10000, 
-    headers: { 'x-access-token': cookies.get('authToken') }
 });
 
 // Step-2: Create request, response & error handlers
@@ -16,6 +15,7 @@ const requestHandler = request => {
     // Token will be dynamic so we can use any app-specific way to always   
     // fetch the new token before making the call
     // request.headers.Authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwibmFtZSI6IlNhbXBsZSIsImlhdCI6MTUxNjIzODIzfQ.ZEBwz4pWYGqgFJc6DIi7HdTN0z5Pfs4Lcv4ZNwMr1rs';  
+    request.headers['x-access-token'] =  cookies.get('authToken')
   
     return request;
 };
@@ -28,6 +28,8 @@ const responseHandler = response => {
 };
 
 const errorHandler = err => {
+    if(err && err.response && err.response.status == 401)
+        window.location = '/user/login'
     if (err.response && err.response.data && err.response.data.type == 'KnownError') {
         err.message = err.response.data.message;
     } else {
