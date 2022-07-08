@@ -107,6 +107,12 @@ export default function LoginForm() {
 
     }
 
+
+    const navToRegisterPg = (e) => {
+        e.preventDefault();
+        navigate(`/user/register`)
+    }
+
     const Logout = () => {
         console.log("Logout");
         setUser({
@@ -153,7 +159,7 @@ export default function LoginForm() {
                             <input type="submit" value="LOGIN" className='login-btn' />
                         </div>
                         <div className='p-2 mt-4 text-center'>
-                            Don't have an account yet, <span className='fw-bold bgGry px-2 pb-1 rounded'>Sign Up</span> 
+                            Don't have an account yet, <button className='btn btn-secondary btn-sm' onClick={navToRegisterPg}>Sign Up</button> 
                         </div>
                     </div>
                 </form>
