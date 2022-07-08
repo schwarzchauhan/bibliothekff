@@ -13,6 +13,12 @@ const validateEmail = (email) => {
         );
 }
 
+// username starts with a-z , only made up of a-z0-9_
+const validateUsername = (username) => {
+    const isValidUsername = /^[a-z][a-z0-9_]*$/.test(username);
+    return isValidUsername
+}
+
 export default function Register() {
 
     const userService = new UserService();
@@ -20,7 +26,7 @@ export default function Register() {
         backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/3/3b/Siegessaeule_Aussicht_10-13_img4_Tiergarten.jpg')"
     };
 
-    const [details, setDetails] = useState({ email: "", password: "" });
+    const [details, setDetails] = useState({ email: "", password: "", name: "", username: "" });
     const [error, setErrMsg] = useState("");
 
     let navigate = useNavigate();
@@ -46,17 +52,19 @@ export default function Register() {
 
     const Register = async (details) => {
         try {
-            const { email, password } = details;
+            const { email, password, name, username } = details;
 
-            if(!(email && password)){
-                throw new Error('Oops! Credentials missing....')
+            if(!(email && password && name)){
+                throw new Error('Oops! Fields missing....')
             }
-            if (validateEmail(email)) {
-                var body = { email: email, password: password };
-                return userService.register(body);
-            } else {
+            if (!validateEmail(email)) {
                 throw new Error('Oops! Invalid email...')
             }
+            if (!validateUsername(username)) {
+                throw new Error('Oops! Invalid username...')
+            }
+            var body = { email, password, name, username };
+            return userService.register(body);
         } catch (err) {
             throw err;
         }
@@ -79,9 +87,19 @@ export default function Register() {
                             )
                         }
                         <div className='login-form-group p-2'>
+                            <label htmlFor='name'><i className="lni lni-user"></i> Name </label>
+                            <br />
+                            <input type="text" name="name" id="name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} required />
+                        </div>
+                        <div className='login-form-group p-2'>
+                            <label htmlFor='username'><i className="lni lni-user"></i> Username </label>
+                            <br />
+                            <input type="text" name="username" id="username" onChange={e => setDetails({ ...details, username: e.target.value })} value={details.username} required />
+                        </div>
+                        <div className='login-form-group p-2'>
                             <label htmlFor='email'><i className="lni lni-user"></i> Email </label>
                             <br />
-                            <input type="text" name="email" id="name" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} required />
+                            <input type="text" name="email" id="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} required />
                         </div>
                         <div className='login-form-group p-2'>
                             <label htmlFor='password'><i className="lni lni-lock-alt"></i> Password: </label>
