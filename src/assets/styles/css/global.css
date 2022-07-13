@@ -39,6 +39,10 @@ html, body, #root {
     height: 100%;
 }
 
+.tp30per {
+    top: 30%;
+}
+
 .ovrFlwYato {
     overflow-y: auto;
 }
