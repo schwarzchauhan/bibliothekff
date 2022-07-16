@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../assets/styles/css/global.css'
+import '../../assets/styles/sass/Flagge.scss'
 import { Carousel } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import DeService from '../../services/DeService'
@@ -28,7 +29,7 @@ export default function ControlledCarousel() {
   }, []);
 
   return (
-    <div className='container-fluid hght100pr bg-dark'>
+    <div className='flag-cont container-fluid hght100pr bg-dark'>
       <div className='hght100pr'>
         <Carousel activeIndex={index} onSelect={handleSelect} interval={1000} fade>
           {flags.map(flg => (
@@ -39,10 +40,12 @@ export default function ControlledCarousel() {
                 alt="First slide"
               />
               <Carousel.Caption>
-                <h3>{flg.land}</h3>
-                {flg.farbe.map(frb => (
-                  <span key={frb}>{frb}</span>
-                ))}
+                <div>
+                  <h3>{flg.land}</h3>
+                  {flg.farbe.map(frb => (
+                    <span key={frb}>{frb} <br /> </span>
+                  ))}
+                </div>
               </Carousel.Caption>
             </Carousel.Item>
           ))}
