@@ -91,6 +91,8 @@ dev dependencies
 
 - [custom axios](https://blog.clairvoyantsoft.com/intercepting-requests-responses-using-axios-df498b6cab62)
 
+- [typewriter effect](https://www.npmjs.com/package/typewriter-effect)
+
 ## hosting on netlify
 > `CI=false npm run build`
 
