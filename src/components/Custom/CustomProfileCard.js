@@ -8,13 +8,16 @@ function Profile(props) {
   const [picture, setPicture] = useState({});
     
   const uploadPicture = (e) => {
+    var files = e.target.files;
+    var fileName = files[0].name;
     setPicture({
         /* contains the preview, if you want to show the picture to the user
            you can access it with this.state.currentPicture
        */
         picturePreview : URL.createObjectURL(e.target.files[0]),
         /* this contains the file we want to send */
-        pictureAsFile : e.target.files[0]
+        pictureAsFile : e.target.files[0], 
+        pictureName: fileName
     })
   };
 
@@ -37,21 +40,28 @@ function Profile(props) {
   };
 
   useEffect(() => {
-    // updated useerdeails
+    // updated useerdetails
     console.log(picture);
   }, [picture]);
 
     return (
-        <div className="container p-3 d-flex justify-content-center">
+        <div className="cstm-profile-cont container p-3 d-flex justify-content-center">
         <div className="card p-4">
           <div className="profileImg d-flex flex-column justify-content-center align-items-center">
             <button className="btn btn-secondary">
             {picture.picturePreview &&  <img src={picture.picturePreview} alt="" height="100" width="100" />}
               {!picture.picturePreview &&  <img src={props.imgUrl} height="100" width="100" />}
             </button>
-            <div>
+            <div className='text-center'>
               <form onSubmit={setImageAction}>
-                <input type="file" name="image" onChange={uploadPicture} />
+                <br />
+                <label for="dpImg" className='dpUpload-fld'>
+                  Select Image <br/>
+                  <i class="lni lni-camera"></i>
+                  <input  id="dpImg" type="file" name="image" onChange={uploadPicture} />
+                  <br/>
+                  <span id="dpImgName">{picture.pictureName}</span>
+                </label>
                 <br />
                 <br />
                 <button className='btn btn-primary' type="submit" name="upload">

@@ -2,6 +2,14 @@
 
 .profile-cont {
 
+    .cstm-profile-cont {
+        .dpUpload-fld {
+            cursor:pointer;
+            input {
+                display: none;
+            }
+        }
+    }
     .card {
         .profileImg {
             img {
