@@ -29,6 +29,21 @@ export default function ControlledCarousel() {
   }, []);
 
   return (
+
+    <>
+
+    <div className='my-srch-bar'>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand">FLAGS</a>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </div>
+
     <div className='flag-cont container-fluid hght100pr bg-dark'>
       <div className='hght100pr'>
         <Carousel activeIndex={index} onSelect={handleSelect} interval={1000} fade>
@@ -52,6 +67,8 @@ export default function ControlledCarousel() {
         </Carousel>
       </div>
     </div>
+    
+    </>
 
   );
 }
