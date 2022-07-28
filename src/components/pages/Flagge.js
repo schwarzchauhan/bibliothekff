@@ -4,12 +4,37 @@ import '../../assets/styles/sass/Flagge.scss'
 import { Carousel } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import DeService from '../../services/DeService'
+import CustomDropdown from '../Custom/CustomDropdown'
 
 // https://react-bootstrap.github.io/components/carousel/
 export default function ControlledCarousel() {
   const [index, setIndex] = useState(0);
   const [flags, setFlags] = useState([]);
-  const [flagsOnSearch, setFlagsOnSearch] = useState([]); // TODO : show this array of flags in dropdown, below search button
+  const [flagsOnSearch, setFlagsOnSearch] = useState([
+    {
+      _id: "62d53ad2d1cbee147e71cda1",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg",
+      farbe: [
+        "rot",
+        "weiß"
+      ],
+      artikel: "",
+      land: "Österreich",
+      country: "Austria"
+    },
+    {
+      _id: "62dea54c85f0def29bb71e56",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg",
+      farbe: [
+        "rot",
+        "weiß",
+        "blau"
+      ],
+      artikel: "das",
+      land: "Australien",
+      country: "Australia"
+    }
+  ]); // TODO : show this array of flags in dropdown, below search button
   const [searchText, setSearchText] = useState('')
   let delay;
 
@@ -31,7 +56,7 @@ export default function ControlledCarousel() {
   }, []);
 
 
-  
+  // show countries for query in search bar
   const callApi = ()=> {
     console.log('call Api',searchText)
     const deService = new DeService();
@@ -79,7 +104,10 @@ export default function ControlledCarousel() {
           <a class="navbar-brand">FLAGS</a>
           <form class="d-flex" onSubmit={handleSearchFlag}>
             <input class="form-control me-2" value={searchText} type="search" placeholder="Search..." onChange={(e) => setSearchText(e.target.value)} onKeyDown={keyDown} aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            {/* <button class="btn btn-outline-success" type="submit">Search</button> */}
+            <div>
+              <CustomDropdown flagsOnSearch={flagsOnSearch} />
+            </div>
           </form>
         </div>
       </nav>
