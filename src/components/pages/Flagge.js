@@ -99,12 +99,12 @@ export default function ControlledCarousel() {
     <>
 
     <div className='my-srch-bar'>
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">FLAGS</a>
-          <form class="d-flex" onSubmit={handleSearchFlag}>
-            <input class="form-control me-2" value={searchText} type="search" placeholder="Search..." onChange={(e) => setSearchText(e.target.value)} onKeyDown={keyDown} aria-label="Search" />
-            {/* <button class="btn btn-outline-success" type="submit">Search</button> */}
+      <nav className="navbar navbar-dark bg-dark">
+        <div className="container-fluid">
+          <a className="navbar-brand">FLAGS</a>
+          <form className="d-flex" onSubmit={handleSearchFlag}>
+            <input className="form-control me-2" value={searchText} type="search" placeholder="Search..." onChange={(e) => setSearchText(e.target.value)} onKeyDown={keyDown} aria-label="Search" />
+            {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
             <div>
               <CustomDropdown flagsOnSearch={flagsOnSearch} />
             </div>

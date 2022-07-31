@@ -57,7 +57,7 @@ function Profile(props) {
                 <br />
                 <label for="dpImg" className='dpUpload-fld'>
                   Select Image <br/>
-                  <i class="lni lni-camera"></i>
+                  <i className="lni lni-camera"></i>
                   <input  id="dpImg" type="file" name="image" onChange={uploadPicture} />
                   <br/>
                   <span id="dpImgName">{picture.pictureName}</span>
