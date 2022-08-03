@@ -23,6 +23,22 @@ class UserService {
         })
     }
 
+    getFlgsByStringSrch = (body) => {
+        const url = this.domain + `/api/search/country`;
+        return new Promise((resolve, reject) => {
+            customAxios.post(url, body)
+                .then((res) => {
+                    console.error(res.data);
+                    return resolve(res.data);
+                })
+                .catch((err) => {
+                    console.warn(err);
+                    console.warn(err.message);
+                    return reject(err);
+                })
+        })
+    }
+
 }
 
 export default UserService;

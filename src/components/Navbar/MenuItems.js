@@ -14,5 +14,9 @@ export const MenuItems = [
     {
         title: 'Quiz',
         url: '/quiz/mcq'
+    }, 
+    {
+        title: 'Flag',
+        url: '/flag'
     }
 ]
