@@ -65,10 +65,16 @@ export default function ControlledCarousel() {
     deService.getFlgsByStringSrch(body)
         .then((data) => {
             console.error(data);
+            // TODO  update the child compo when the props changes, used below sol
+            // https://stackoverflow.com/questions/38892672/react-why-child-component-doesnt-update-when-prop-changes
+           // my key is flagsOnSearch.length, 
+           //  attention the above length may be same in case of two searches having same no of resul , changes this 
+            setFlagsOnSearch(data)
         })
         .catch((err) => {
             console.warn(err);
             console.warn(err.message);
+            setFlagsOnSearch([])
         })
   }
 
@@ -106,7 +112,7 @@ export default function ControlledCarousel() {
             <input className="form-control me-2" value={searchText} type="search" placeholder="Search..." onChange={(e) => setSearchText(e.target.value)} onKeyDown={keyDown} aria-label="Search" />
             {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
             <div>
-              <CustomDropdown flagsOnSearch={flagsOnSearch} />
+              <CustomDropdown flagsOnSearch={flagsOnSearch} key={flagsOnSearch.length} />
             </div>
           </form>
         </div>

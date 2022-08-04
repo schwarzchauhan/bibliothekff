@@ -15,7 +15,7 @@ function CustomDropdown(props) {
   return (
     <DropdownButton id="dropdown-basic-button" title="Dropdown button">
      {flagsOnSearch.map((flg, index) => (
-          <Dropdown.Item href="" key={index}>{flg.land}</Dropdown.Item>
+          <Dropdown.Item href="" key={index}>{flg.country}</Dropdown.Item>
       ))}
    </DropdownButton>
   );
